@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:www.woodboroughkennels.co.uk)",
+      "WebFetch(domain:www.facebook.com)",
+      "Bash(python scrape_images.py)",
+      "Bash(cp \"IMG_0578-2880w.JPG\" \"../../site/assets/img/scenes/hero-walled-garden.jpg\")",
+      "Bash(cp \"IMG_0413-2880w.JPG\" \"../../site/assets/img/scenes/garden-path.jpg\")",
+      "Bash(cp \"lake-1920w.jpg\" \"../../site/assets/img/scenes/lakeside-1.jpg\")",
+      "Bash(cp \"lake_2-1920w.jpg\" \"../../site/assets/img/scenes/lakeside-2.jpg\")",
+      "Bash(cp \"IMG_20200121_171214_926-1920w.jpg\" \"../../site/assets/img/scenes/exercise-field.jpg\")"
+    ]
+  }
+}
