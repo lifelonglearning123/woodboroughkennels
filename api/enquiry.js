@@ -37,7 +37,7 @@ function clean(value) {
   return value.trim().slice(0, MAX_LEN);
 }
 
-/* UK numbers arrive as 07782 220076 — GHL wants E.164. */
+/* UK numbers arrive as 07912 615229 — GHL wants E.164. */
 function normalisePhone(raw) {
   const v = clean(raw).replace(/[^\d+]/g, '');
   if (!v) return '';
