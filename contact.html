@@ -95,7 +95,7 @@
       <h2 style="margin-top: 1rem; color: var(--moss-deep);">Tell us about <em>your stay.</em></h2>
       <p class="lead" style="margin-top: 0.8rem; margin-bottom: 1.8rem;">Send the basics — we'll come back with availability and the next step.</p>
 
-      <form class="contact-form" action="mailto:woodborough@yahoo.co.uk" method="post" enctype="text/plain">
+      <form class="contact-form" data-ghl-form>
         <div class="contact-form__row">
           <label class="field">
             <span>First name</span>
@@ -158,8 +158,16 @@
           <span>We've stayed at Woodborough before</span>
         </label>
 
+        <div class="field field--trap" aria-hidden="true">
+          <label for="company">Company</label>
+          <input type="text" id="company" name="company" tabindex="-1" autocomplete="off" />
+        </div>
+
         <button type="submit" class="btn btn--primary btn--icon" style="justify-self: start;">Send enquiry</button>
-        <p style="font-size: 0.78rem; color: var(--ink-mute); letter-spacing: 0.04em;">By submitting, you'll be opening an email to our reception with the above details prefilled.</p>
+
+        <p class="form-status" data-ghl-status role="status" aria-live="polite"></p>
+
+        <p style="font-size: 0.78rem; color: var(--ink-mute); letter-spacing: 0.04em;">We use your details only to answer this enquiry. Reception replies within 48 hours, often sooner.</p>
       </form>
     </div>
 
@@ -189,6 +197,8 @@
   </div>
   <div class="container site-footer__bottom"><span>© Woodborough Gardens Kennels — License 20/01755/animal</span><span>Established c.1990 · Family-run, family-owned</span></div>
 </footer>
+
+<script src="assets/js/ghl-form.js" defer></script>
 
 <div class="call-bar"><a href="tel:+447782220076">07782 220 076</a><a href="#enquire" class="call-bar__pill">Enquire</a></div>
 </body>

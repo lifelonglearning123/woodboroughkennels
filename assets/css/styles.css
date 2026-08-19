@@ -1088,6 +1088,31 @@ p + p { margin-top: 1em; }
 .contact-form__row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
 @media (max-width: 760px) { .contact-form__row { grid-template-columns: 1fr; } .contact-grid { grid-template-columns: 1fr; } }
 
+.field--trap { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.contact-form button[disabled] { opacity: 0.55; cursor: progress; transform: none; }
+.form-status {
+  margin: 0;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: var(--ink-soft);
+}
+.form-status:empty { display: none; }
+.form-status.is-pending { color: var(--ink-mute); }
+.form-status.is-ok {
+  color: var(--moss-deep);
+  padding: 0.7rem 0.95rem;
+  border-left: 3px solid var(--sage);
+  background: var(--cream);
+  border-radius: 0 var(--rad-sm) var(--rad-sm) 0;
+}
+.form-status.is-error {
+  color: var(--brick-dark);
+  padding: 0.7rem 0.95rem;
+  border-left: 3px solid var(--brick);
+  background: rgba(184, 84, 42, 0.07);
+  border-radius: 0 var(--rad-sm) var(--rad-sm) 0;
+}
+
 /* ---------- map ---------- */
 .map {
   border-radius: var(--rad-lg);
