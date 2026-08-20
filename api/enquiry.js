@@ -97,6 +97,54 @@ async function sendToGhl(payload, token) {
   return { ok: res.ok, status: res.status, body };
 }
 
+/* GHL silently drops custom fields whose key does not exist in the
+   location, so the substance of the enquiry — pet, dates, notes —
+   is also written as a note on the contact. That always lands. */
+const NOTE_ROWS = [
+  ['Service',          'service'],
+  ['Pet',              'pet'],
+  ['Arrival',          'from_date'],
+  ['Departure',        'to_date'],
+  ['Returning client', 'returning']
+];
+
+function buildNote(data) {
+  const stamp = new Date().toLocaleDateString('en-GB', {
+    day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Europe/London'
+  });
+  const lines = ['Website enquiry — ' + stamp, ''];
+
+  for (const [label, field] of NOTE_ROWS) {
+    const value = clean(data[field]);
+    if (value) lines.push(label + ': ' + value);
+  }
+
+  const notes = clean(data.notes);
+  if (notes) lines.push('', 'Anything we should know:', notes);
+
+  return lines.join('\n');
+}
+
+async function addNote(contactId, body, token) {
+  const res = await fetch(
+    `https://services.leadconnectorhq.com/contacts/${contactId}/notes`, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Version':       GHL_VERSION,
+        'Content-Type':  'application/json',
+        'Accept':        'application/json'
+      },
+      body: JSON.stringify({ body })
+    });
+
+  if (!res.ok) {
+    let detail = '';
+    try { detail = JSON.stringify(await res.json()); } catch (_) { /* non-JSON */ }
+    throw new Error(res.status + ' ' + detail);
+  }
+}
+
 module.exports = async (req, res) => {
   if (req.method !== 'POST') {
     res.setHeader('Allow', 'POST');
@@ -145,6 +193,20 @@ module.exports = async (req, res) => {
       /* Log the detail server-side; keep it out of the browser response. */
       console.error('[GHL] Upsert failed:', result.status, result.body);
       return res.status(502).json({ error: 'We could not save your enquiry.' });
+    }
+
+    const contactId = result.body && result.body.contact && result.body.contact.id;
+
+    if (contactId) {
+      try {
+        await addNote(contactId, buildNote(data), token);
+      } catch (err) {
+        /* The enquiry is safely in GHL. A missing note is a reception
+           inconvenience, not a reason to tell the visitor it failed. */
+        console.error('[GHL] Note failed for contact', contactId, err);
+      }
+    } else {
+      console.error('[GHL] Upsert returned no contact id; note skipped');
     }
 
     return res.status(200).json({ ok: true });
