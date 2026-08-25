@@ -709,8 +709,44 @@ p + p { margin-top: 1em; }
   color: var(--ink-mute);
 }
 .accolades__panel ul {
-  display: flex; flex-direction: column; gap: 1rem;
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem;
 }
+@media (max-width: 700px) { .accolades__panel ul { grid-template-columns: 1fr; } }
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2rem;
+  margin-top: 2.4rem;
+}
+.review-card {
+  background: var(--paper);
+  border: 1px solid var(--bone);
+  border-radius: var(--rad-md);
+  padding: 1.5rem 1.6rem;
+}
+.review-card__stars {
+  display: block;
+  color: var(--gold);
+  letter-spacing: 0.12em;
+  margin-bottom: 0.7rem;
+}
+.review-card__quote {
+  font-family: 'Fraunces', serif;
+  font-variation-settings: "SOFT" 70, "opsz" 144;
+  font-size: 1.02rem;
+  line-height: 1.45;
+  color: var(--moss-deep);
+}
+.review-card__cite {
+  display: block;
+  margin-top: 0.9rem;
+  font-size: 0.76rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+}
+@media (max-width: 900px) { .reviews-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .reviews-grid { grid-template-columns: 1fr; } }
 .accolades__panel li {
   display: grid;
   grid-template-columns: auto 1fr;
