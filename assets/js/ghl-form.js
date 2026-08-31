@@ -12,7 +12,7 @@
   var ENDPOINT = '/api/enquiry';
 
   var FIELDS = [
-    'first_name', 'surname', 'email', 'phone', 'pet',
+    'first_name', 'surname', 'email', 'phone', 'dog_name', 'breed',
     'service', 'from_date', 'to_date', 'notes', 'returning', 'company'
   ];
 

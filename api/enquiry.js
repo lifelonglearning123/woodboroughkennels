@@ -20,7 +20,8 @@ const COUNTRY = 'GB';
 /* Form field → GHL custom field Unique Key.
    Swap a value for { id: 'abc123' } if you'd rather match on field ID. */
 const CUSTOM_FIELDS = {
-  pet:       'pet_name_and_breed',
+  dog_name:  'dog_name',
+  breed:     'dog_breed',
   service:   'service_enquired',
   from_date: 'arrival_date',
   to_date:   'departure_date',
@@ -102,7 +103,8 @@ async function sendToGhl(payload, token) {
    is also written as a note on the contact. That always lands. */
 const NOTE_ROWS = [
   ['Service',          'service'],
-  ['Pet',              'pet'],
+  ['Dog\'s name',      'dog_name'],
+  ['Breed',            'breed'],
   ['Arrival',          'from_date'],
   ['Departure',        'to_date'],
   ['Returning client', 'returning']
