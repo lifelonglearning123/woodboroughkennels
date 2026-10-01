@@ -19,13 +19,6 @@
     <image:image><image:loc>https://www.woodboroughkennels.co.uk/assets/img/scenes/exercise-field.jpg</image:loc></image:image>
   </url>
   <url>
-    <loc>https://www.woodboroughkennels.co.uk/cattery.html</loc>
-    <lastmod>2026-04-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <image:image><image:loc>https://www.woodboroughkennels.co.uk/assets/img/scenes/cat.jpg</image:loc></image:image>
-  </url>
-  <url>
     <loc>https://www.woodboroughkennels.co.uk/day-care.html</loc>
     <lastmod>2026-04-25</lastmod>
     <changefreq>monthly</changefreq>
