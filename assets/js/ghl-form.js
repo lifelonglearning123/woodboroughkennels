@@ -2,9 +2,8 @@
    Woodborough Gardens Kennels — contact form
 
    Posts the enquiry to /api/enquiry, which forwards it to the
-   GoHighLevel sub-account. No credentials live in this file: the
-   location ID and token are environment variables read server-side
-   by api/enquiry.js.
+   GoHighLevel inbound webhook. The webhook URL lives server-side in
+   api/enquiry.js, not in this file.
    ------------------------------------------------------------------ */
 (function () {
   'use strict';
