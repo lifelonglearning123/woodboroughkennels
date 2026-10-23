@@ -286,6 +286,7 @@ p + p { margin-top: 1em; }
 @media (max-width: 960px) {
   .nav { display: none; }
   .header__phone { display: none; }
+  .header__cta > .btn { display: none; }
   .menu-toggle {
     display: inline-flex; align-items: center; gap: 0.5rem;
     padding: 0.55rem 1rem; border-radius: 999px;
